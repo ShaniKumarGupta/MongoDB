@@ -1,0 +1,72 @@
+1) Show the database which is available -->
+
+> show dbs
+Information  0.000GB
+Restaurant   0.000GB
+admin        0.000GB
+config       0.000GB
+local        0.000GB
+mongolab     0.000GB
+shani_stack  0.000GB
+test         0.000GB
+xyz          0.006GB
+
+2) To use particular database or create new database -->
+
+> use STUDENT
+switched to db STUDENT
+
+3) To check in which database you are working -->
+
+> db
+STUDENT
+
+4) Create Collection in a database and show the collection -->
+
+> db.createCollection("Student_Data");
+{ "ok" : 1 }
+
+> show dbs
+Information  0.000GB
+Restaurant   0.000GB
+STUDENT      0.000GB
+admin        0.000GB
+config       0.000GB
+local        0.000GB
+mongolab     0.000GB
+shani_stack  0.000GB
+test         0.000GB
+xyz          0.006GB
+
+> show collections
+Student_Data
+
+5) To drop particular collection from the database --->
+
+> use xyz
+switched to db xyz
+> db
+xyz
+> show collections
+xy
+> db.xy.drop()
+true
+
+6) To drop particular Database -->
+
+> db
+xyz
+> db.dropDatabase()
+{ "dropped" : "xyz", "ok" : 1 }
+
+> show dbs
+Information  0.000GB
+Restaurant   0.000GB
+STUDENT      0.000GB
+admin        0.000GB
+config       0.000GB
+local        0.000GB
+mongolab     0.000GB
+shani_stack  0.000GB
+test         0.000GB
+
