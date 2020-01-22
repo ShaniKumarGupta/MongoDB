@@ -1,0 +1,211 @@
+
+//////////////// Insert() and Find() command in mongodb ///////////////////
+
+> use STUDENT
+switched to db STUDENT
+
+> db
+STUDENT
+
+> show collections
+Student_Data
+
+
+> db.Student_Data.insertOne({"Name":"Shani Kumar Gupta","DOB":1999,"Age":20,"Course":"B.TECH","Branch":"CSE","University Roll No":171500308,"CPI":7.69,"Language":["English","Hindi"],"City":"Renukoot"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("5e1c7d35fa6925c68d9cc53d")
+}
+
+
+> db.Student_Data.find().pretty()
+{
+        "_id" : ObjectId("5e1c7d35fa6925c68d9cc53d"),
+        "Name" : "Shani Kumar Gupta",
+        "DOB" : 1999,
+        "Age" : 20,
+        "Course" : "B.TECH",
+        "Branch" : "CSE",
+        "University Roll No" : 171500308,
+        "CPI" : 7.69,
+        "Language" : [
+                "English",
+                "Hindi"
+        ],
+        "City" : "Renukoot"
+}
+
+
+> db.Student_Data.find()
+{ "_id" : ObjectId("5e1c7d35fa6925c68d9cc53d"), "Name" : "Shani Kumar Gupta", "DOB" : 1999, "Age" : 20, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500308, "CPI" : 7.69, "Language" : [ "English", "Hindi" ], "City" : "Renukoot" }
+>
+
+
+> db.Student_Data.insertMany([{"Name":"Vivek Kumar","DOB":1998,"Age":21,"Course":"B.TECH","Branch":"ECE","University Roll No":171100045,"CPI":7.21,"Language":["Hindi","English"],"City":"Renukoot"},{"Name":"Aman Kumar","DOB":1996,"Age":23,"Course":"B.TECH","Branch":"CSE","University Roll No":171500022,"CPI":7.46,"Language":["French","English","Hindi"],"City":"Hathras"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5e1c7ed8fa6925c68d9cc53e"),
+                ObjectId("5e1c7ed8fa6925c68d9cc53f")
+        ]
+}
+> db.Student_Data.find().pretty()
+{
+        "_id" : ObjectId("5e1c7d35fa6925c68d9cc53d"),
+        "Name" : "Shani Kumar Gupta",
+        "DOB" : 1999,
+        "Age" : 20,
+        "Course" : "B.TECH",
+        "Branch" : "CSE",
+        "University Roll No" : 171500308,
+        "CPI" : 7.69,
+        "Language" : [
+                "English",
+                "Hindi"
+        ],
+        "City" : "Renukoot"
+}
+{
+        "_id" : ObjectId("5e1c7ed8fa6925c68d9cc53e"),
+        "Name" : "Vivek Kumar",
+        "DOB" : 1998,
+        "Age" : 21,
+        "Course" : "B.TECH",
+        "Branch" : "ECE",
+        "University Roll No" : 171100045,
+        "CPI" : 7.21,
+        "Language" : [
+                "Hindi",
+                "English"
+        ],
+        "City" : "Renukoot"
+}
+{
+        "_id" : ObjectId("5e1c7ed8fa6925c68d9cc53f"),
+        "Name" : "Aman Kumar",
+        "DOB" : 1996,
+        "Age" : 23,
+        "Course" : "B.TECH",
+        "Branch" : "CSE",
+        "University Roll No" : 171500022,
+        "CPI" : 7.46,
+        "Language" : [
+                "French",
+                "English",
+                "Hindi"
+        ],
+        "City" : "Hathras"
+}
+
+
+> db.Student_Data.insertMany([{"Name":"Prince Singh","DOB":2000,"Age":20,"Course":"B.TECH","Branch":"CSE","University Roll No":171500239,"CPI":7.7,"Language":["Hindi","English"],"City":"Delhi"},{"Name":"Mudit Mangal","DOB":1995,"Age":25,"Course":"B.TECH","Branch":"CSE","University Roll No":171500328,"CPI":8.4,"Language":["English","Hindi"],"City":"Alighar"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("5e1c7f73fa6925c68d9cc540"),
+                ObjectId("5e1c7f73fa6925c68d9cc541")
+        ]
+}
+>
+> db.Student_Data.find().pretty()
+{
+        "_id" : ObjectId("5e1c7d35fa6925c68d9cc53d"),
+        "Name" : "Shani Kumar Gupta",
+        "DOB" : 1999,
+        "Age" : 20,
+        "Course" : "B.TECH",
+        "Branch" : "CSE",
+        "University Roll No" : 171500308,
+        "CPI" : 7.69,
+        "Language" : [
+                "English",
+                "Hindi"
+        ],
+        "City" : "Renukoot"
+}
+{
+        "_id" : ObjectId("5e1c7ed8fa6925c68d9cc53e"),
+        "Name" : "Vivek Kumar",
+        "DOB" : 1998,
+        "Age" : 21,
+        "Course" : "B.TECH",
+        "Branch" : "ECE",
+        "University Roll No" : 171100045,
+        "CPI" : 7.21,
+        "Language" : [
+                "Hindi",
+                "English"
+        ],
+        "City" : "Renukoot"
+}
+{
+        "_id" : ObjectId("5e1c7ed8fa6925c68d9cc53f"),
+        "Name" : "Aman Kumar",
+        "DOB" : 1996,
+        "Age" : 23,
+        "Course" : "B.TECH",
+        "Branch" : "CSE",
+        "University Roll No" : 171500022,
+        "CPI" : 7.46,
+        "Language" : [
+                "French",
+                "English",
+                "Hindi"
+        ],
+        "City" : "Hathras"
+}
+{
+        "_id" : ObjectId("5e1c7f73fa6925c68d9cc540"),
+        "Name" : "Prince Singh",
+        "DOB" : 2000,
+        "Age" : 20,
+        "Course" : "B.TECH",
+        "Branch" : "CSE",
+        "University Roll No" : 171500239,
+        "CPI" : 7.7,
+        "Language" : [
+                "Hindi",
+                "English"
+        ],
+        "City" : "Delhi"
+}
+{
+        "_id" : ObjectId("5e1c7f73fa6925c68d9cc541"),
+        "Name" : "Mudit Mangal",
+        "DOB" : 1995,
+        "Age" : 25,
+        "Course" : "B.TECH",
+        "Branch" : "CSE",
+        "University Roll No" : 171500328,
+        "CPI" : 8.4,
+        "Language" : [
+                "English",
+                "Hindi"
+        ],
+        "City" : "Aligarh"
+}
+
+
+> db.Student_Data.find({})
+{ "_id" : ObjectId("5e1c7d35fa6925c68d9cc53d"), "Name" : "Shani Kumar Gupta", "DOB" : 1999, "Age" : 20, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500308, "CPI" : 7.69, "Language" : [ "English", "Hindi" ], "City" : "Renukoot" }
+{ "_id" : ObjectId("5e1c7ed8fa6925c68d9cc53e"), "Name" : "Vivek Kumar", "DOB" : 1998, "Age" : 21, "Course" : "B.TECH", "Branch" : "ECE", "University Roll No" : 171100045, "CPI" : 7.21, "Language" : [ "Hindi", "English" ], "City" : "Renukoot" }
+{ "_id" : ObjectId("5e1c7ed8fa6925c68d9cc53f"), "Name" : "Aman Kumar", "DOB" : 1996, "Age" : 23, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500022, "CPI" : 7.46, "Language" : [ "French", "English", "Hindi" ], "City" : "Hathras" }
+{ "_id" : ObjectId("5e1c7f73fa6925c68d9cc540"), "Name" : "Prince Singh", "DOB" : 2000, "Age" : 20, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500239, "CPI" : 7.7, "Language" : [ "Hindi", "English" ], "City" : "Delhi" }
+{ "_id" : ObjectId("5e1c7f73fa6925c68d9cc541"), "Name" : "Mudit Mangal", "DOB" : 1995, "Age" : 25, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500328, "CPI" : 8.4, "Language" : [ "English", "Hindi" ], "City" : "Alighar" }
+
+
+
+> db.Student_Data.find({},{})
+{ "_id" : ObjectId("5e1c7d35fa6925c68d9cc53d"), "Name" : "Shani Kumar Gupta", "DOB" : 1999, "Age" : 20, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500308, "CPI" : 7.69, "Language" : [ "English", "Hindi" ], "City" : "Renukoot" }
+{ "_id" : ObjectId("5e1c7ed8fa6925c68d9cc53e"), "Name" : "Vivek Kumar", "DOB" : 1998, "Age" : 21, "Course" : "B.TECH", "Branch" : "ECE", "University Roll No" : 171100045, "CPI" : 7.21, "Language" : [ "Hindi", "English" ], "City" : "Renukoot" }
+{ "_id" : ObjectId("5e1c7ed8fa6925c68d9cc53f"), "Name" : "Aman Kumar", "DOB" : 1996, "Age" : 23, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500022, "CPI" : 7.46, "Language" : [ "French", "English", "Hindi" ], "City" : "Hathras" }
+{ "_id" : ObjectId("5e1c7f73fa6925c68d9cc540"), "Name" : "Prince Singh", "DOB" : 2000, "Age" : 20, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500239, "CPI" : 7.7, "Language" : [ "Hindi", "English" ], "City" : "Delhi" }
+{ "_id" : ObjectId("5e1c7f73fa6925c68d9cc541"), "Name" : "Mudit Mangal", "DOB" : 1995, "Age" : 25, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500328, "CPI" : 8.4, "Language" : [ "English", "Hindi" ], "City" : "Alighar" }
+
+
+> db.Student_Data.find({"Name":"Prince Singh"},{})
+{ "_id" : ObjectId("5e1c7f73fa6925c68d9cc540"), "Name" : "Prince Singh", "DOB" : 2000, "Age" : 20, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500239, "CPI" : 7.7, "Language" : [ "Hindi", "English" ], "City" : "Delhi" }
+
+
+> db.Student_Data.find({"Name":"Prince Singh"},{"_id":0})
+{ "Name" : "Prince Singh", "DOB" : 2000, "Age" : 20, "Course" : "B.TECH", "Branch" : "CSE", "University Roll No" : 171500239, "CPI" : 7.7, "Language" : [ "Hindi", "English" ], "City" : "Delhi" }
