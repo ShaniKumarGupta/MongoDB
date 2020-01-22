@@ -1,0 +1,243 @@
+
+////////////////////// Queries related to MOngoDB /////////////////////
+
+> show dbs
+Information  0.000GB
+Restaurant   0.000GB
+admin        0.000GB
+config       0.000GB
+local        0.000GB
+mongolab     0.000GB
+shani_stack  0.000GB
+test         0.000GB
+xyz          0.006GB
+> use shani_stack
+switched to db shani_stack
+> show collection
+2020-01-13T10:36:01.134+0530 E  QUERY    [js] uncaught exception: Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:1139:11
+shellHelper@src/mongo/shell/utils.js:790:15
+@(shellhelp2):1:1
+> show collections
+datatye
+datatype
+mycol
+studata
+> db.studata.find().pretty()
+{
+        "_id" : ObjectId("5e170331b6c87ce123c48476"),
+        "Name" : "Shani Kumar Gupta",
+        "Branch" : "CSE",
+        "University Roll No." : "171500308"
+}
+{
+        "_id" : ObjectId("5e17040eb6c87ce123c48477"),
+        "Name" : "Aman Kumar Sharma",
+        "Branch" : "CSE",
+        "University Roll No." : "171500033"
+}
+{
+        "_id" : ObjectId("5e170433b6c87ce123c48478"),
+        "Name" : "Prince Singh",
+        "Branch" : "CSE",
+        "University Roll No." : "171500239"
+}
+> db.studata.find()
+{ "_id" : ObjectId("5e170331b6c87ce123c48476"), "Name" : "Shani Kumar Gupta", "Branch" : "CSE", "University Roll No." : "171500308" }
+{ "_id" : ObjectId("5e17040eb6c87ce123c48477"), "Name" : "Aman Kumar Sharma", "Branch" : "CSE", "University Roll No." : "171500033" }
+{ "_id" : ObjectId("5e170433b6c87ce123c48478"), "Name" : "Prince Singh", "Branch" : "CSE", "University Roll No." : "171500239" }
+>
+> db.studata.find({"Name":1})
+> db.studata.find({"University Roll No.":171500308},{"Name":1})
+> db.studata.find({"University Roll No.":"171500308"})
+> db.studata.find({"University Roll No.":"171500308"}).pretty()
+> db.studata.find({Name:"Shani"})
+> db.studata.find({Name:"Shani Kumar Gupta"})
+{ "_id" : ObjectId("5e170331b6c87ce123c48476"), "Name" : "Shani Kumar Gupta", "Branch" : "CSE", "University Roll No." : "171500308" }
+> db.studata.find({"Branch":"CSE"}).pretty()
+{
+        "_id" : ObjectId("5e170331b6c87ce123c48476"),
+        "Name" : "Shani Kumar Gupta",
+        "Branch" : "CSE",
+        "University Roll No." : "171500308"
+}
+{
+        "_id" : ObjectId("5e17040eb6c87ce123c48477"),
+        "Name" : "Aman Kumar Sharma",
+        "Branch" : "CSE",
+        "University Roll No." : "171500033"
+}
+{
+        "_id" : ObjectId("5e170433b6c87ce123c48478"),
+        "Name" : "Prince Singh",
+        "Branch" : "CSE",
+        "University Roll No." : "171500239"
+}
+>
+> db.studata.update({"Name":"Shani Kumar Gupta"},{$set:{Age:20}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.studata.find().pretty()
+{
+        "_id" : ObjectId("5e170331b6c87ce123c48476"),
+        "Name" : "Shani Kumar Gupta",
+        "Branch" : "CSE",
+        "University Roll No." : "171500308",
+        "Age" : 20
+}
+{
+        "_id" : ObjectId("5e17040eb6c87ce123c48477"),
+        "Name" : "Aman Kumar Sharma",
+        "Branch" : "CSE",
+        "University Roll No." : "171500033"
+}
+{
+        "_id" : ObjectId("5e170433b6c87ce123c48478"),
+        "Name" : "Prince Singh",
+        "Branch" : "CSE",
+        "University Roll No." : "171500239"
+}
+>
+> db.studata.update({"Name":"Prince Singh"},{$set:{Age:22}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.studata.update({"Name":"Aman Kumar Sharma"},{$set:{Age:21}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.studata.find().pretty()
+{
+        "_id" : ObjectId("5e170331b6c87ce123c48476"),
+        "Name" : "Shani Kumar Gupta",
+        "Branch" : "CSE",
+        "University Roll No." : "171500308",
+        "Age" : 20
+}
+{
+        "_id" : ObjectId("5e17040eb6c87ce123c48477"),
+        "Name" : "Aman Kumar Sharma",
+        "Branch" : "CSE",
+        "University Roll No." : "171500033",
+        "Age" : 21
+}
+{
+        "_id" : ObjectId("5e170433b6c87ce123c48478"),
+        "Name" : "Prince Singh",
+        "Branch" : "CSE",
+        "University Roll No." : "171500239",
+        "Age" : 22
+}
+>
+> db.studata.find({Name:"Shani Kumar Gupta",Age:20}).pretty()
+{
+        "_id" : ObjectId("5e170331b6c87ce123c48476"),
+        "Name" : "Shani Kumar Gupta",
+        "Branch" : "CSE",
+        "University Roll No." : "171500308",
+        "Age" : 20
+}
+>
+> db.studata.find({$and : [{Name:"Shani Kumar Gupta"},{Age:20}]}).pretty()
+{
+        "_id" : ObjectId("5e170331b6c87ce123c48476"),
+        "Name" : "Shani Kumar Gupta",
+        "Branch" : "CSE",
+        "University Roll No." : "171500308",
+        "Age" : 20
+}
+>
+> db.studata.find({$or : [{Name:"Shani Kumar Gupta"},{Age:22}]}).pretty()
+{
+        "_id" : ObjectId("5e170331b6c87ce123c48476"),
+        "Name" : "Shani Kumar Gupta",
+        "Branch" : "CSE",
+        "University Roll No." : "171500308",
+        "Age" : 20
+}
+{
+        "_id" : ObjectId("5e170433b6c87ce123c48478"),
+        "Name" : "Prince Singh",
+        "Branch" : "CSE",
+        "University Roll No." : "171500239",
+        "Age" : 22
+}
+>
+> db.studata.find({$nor : [{Name:"Shani Kumar Gupta"},{Age:22}]}).pretty()
+{
+        "_id" : ObjectId("5e17040eb6c87ce123c48477"),
+        "Name" : "Aman Kumar Sharma",
+        "Branch" : "CSE",
+        "University Roll No." : "171500033",
+        "Age" : 21
+}
+> db.studata.find({"Branch":"CSE",$or[age:{$gt:20}]}).pretty()
+2020-01-13T11:00:58.860+0530 E  QUERY    [js] uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:35
+> db.studata.find({"Branch":"CSE",$or[{age:{$gt:20}]}}).pretty()
+2020-01-13T11:01:38.173+0530 E  QUERY    [js] uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:35
+> db.studata.find({"Branch":"CSE",$or:[{age:{$gt:20}]}}).pretty()
+2020-01-13T11:01:56.329+0530 E  QUERY    [js] uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:50
+> db.studata.find({"Branch":"CSE",$or:[{age:{$gt:20}}]).pretty()
+... ^C
+
+> db.studata.find({"Branch":"CSE",$or:[{age:{$gt:20}]}}).pretty()
+2020-01-13T11:02:56.345+0530 E  QUERY    [js] uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:50
+> db.studata.find({})
+{ "_id" : ObjectId("5e170331b6c87ce123c48476"), "Name" : "Shani Kumar Gupta", "Branch" : "CSE", "University Roll No." : "171500308", "Age" : 20 }
+{ "_id" : ObjectId("5e17040eb6c87ce123c48477"), "Name" : "Aman Kumar Sharma", "Branch" : "CSE", "University Roll No." : "171500033", "Age" : 21 }
+{ "_id" : ObjectId("5e170433b6c87ce123c48478"), "Name" : "Prince Singh", "Branch" : "CSE", "University Roll No." : "171500239", "Age" : 22 }
+> db.studata.find({}).pretty()
+{
+        "_id" : ObjectId("5e170331b6c87ce123c48476"),
+        "Name" : "Shani Kumar Gupta",
+        "Branch" : "CSE",
+        "University Roll No." : "171500308",
+        "Age" : 20
+}
+{
+        "_id" : ObjectId("5e17040eb6c87ce123c48477"),
+        "Name" : "Aman Kumar Sharma",
+        "Branch" : "CSE",
+        "University Roll No." : "171500033",
+        "Age" : 21
+}
+{
+        "_id" : ObjectId("5e170433b6c87ce123c48478"),
+        "Name" : "Prince Singh",
+        "Branch" : "CSE",
+        "University Roll No." : "171500239",
+        "Age" : 22
+}
+>
+> db.studata.find({},{_id:0,Name:1}).pretty()
+{ "Name" : "Shani Kumar Gupta" }
+{ "Name" : "Aman Kumar Sharma" }
+{ "Name" : "Prince Singh" }
+>
+> db.studata.find({},{_id:0,University Roll No.:1}).pretty()
+2020-01-13T11:05:16.547+0530 E  QUERY    [js] uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:37
+> db.studata.find({},{_id:0,"University Roll No.":1}).pretty()
+{ }
+{ }
+{ }
+> db.studata.find({},{_id:0}).pretty()
+{
+        "Name" : "Shani Kumar Gupta",
+        "Branch" : "CSE",
+        "University Roll No." : "171500308",
+        "Age" : 20
+}
+{
+        "Name" : "Aman Kumar Sharma",
+        "Branch" : "CSE",
+        "University Roll No." : "171500033",
+        "Age" : 21
+}
+{
+        "Name" : "Prince Singh",
+        "Branch" : "CSE",
+        "University Roll No." : "171500239",
+        "Age" : 22
+}
+>
+
